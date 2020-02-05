@@ -1,2 +1,3 @@
-# Project-Template-Godot
-A default Godot project template for MSCH-C220
+# Space Shooter Game - Project04
+
+This is a full but simple space shooter game created in Godot for a G320 Game Technology class at Indiana University. The game is comprised of a ship which the user controls. The user must performs actions such as shooting down enemy ships and avoiding space obstacles to score points while avoiding death by enemy.
