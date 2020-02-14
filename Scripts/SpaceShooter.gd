@@ -1,23 +1,15 @@
 extends Node2D
 
-onready var Score = $Score
 onready var asteroid = load("res://Scenes/asteroid.tscn")
-var score = 0
-
-	
-func _ready():
-	update_score()
+export var score = 0
 
 func increase_score():
 	score = score + 1
-	update_score()
+	find_node("score").update_score()
 
-func reset_score():
+func decrease_score():
 	score = score - 5
-	update_score()
-
-func update_score():
-	Score.text = "Score: " + str(score)
+	find_node("score").update_score()
 
 func _on_Timer_timeout():
 	var a = asteroid.instance()

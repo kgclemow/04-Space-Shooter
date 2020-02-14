@@ -4,7 +4,7 @@
 [ext_resource path="res://Assets/Starset.png" type="Texture" id=2]
 [ext_resource path="res://Scripts/Spaceship.gd" type="Script" id=3]
 [ext_resource path="res://Assets/DurrrSpaceShip.png" type="Texture" id=4]
-[ext_resource path="res://Scripts/Label.gd" type="Script" id=5]
+[ext_resource path="res://Scripts/score.gd" type="Script" id=5]
 
 [node name="Game" type="Node2D"]
 script = ExtResource( 1 )
@@ -33,27 +33,11 @@ polygon = PoolVector2Array( -22.8162, 62.0427, -55.8477, 61.6246, -57.102, 74.16
 
 [node name="Info" type="Node2D" parent="."]
 
-[node name="Alpha" type="ColorRect" parent="Info"]
-margin_left = 953.765
-margin_top = 555.179
-margin_right = 1014.77
-margin_bottom = 592.179
-color = Color( 1, 1, 1, 0.25098 )
-
-[node name="x,y" type="Label" parent="Info"]
-margin_left = 955.761
-margin_top = 563.688
-margin_right = 1013.76
-margin_bottom = 582.688
-text = "x, y"
-align = 1
-valign = 1
-script = ExtResource( 5 )
-
 [node name="score" type="Label" parent="Info"]
 margin_right = 72.0
 margin_bottom = 29.0
 text = "Score:"
+script = ExtResource( 5 )
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 

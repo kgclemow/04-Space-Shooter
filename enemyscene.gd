@@ -11,6 +11,7 @@ func _ready():
 	position = Vector2(x, position.y)
 	
 
+# warning-ignore:unused_argument
 func _physics_process(delta):
 	var colliding = get_colliding_bodies()
 	for c in colliding:
