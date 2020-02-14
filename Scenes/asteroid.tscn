@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://enemyscene.gd" type="Script" id=1]
+[ext_resource path="res://Assets/1346945972.png" type="Texture" id=2]
+
+[node name="Asteroid" type="RigidBody2D"]
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 445.784, 63.0407 )
+scale = Vector2( 0.0744169, 0.0709037 )
+texture = ExtResource( 2 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+position = Vector2( 445.55, 62.227 )
+polygon = PoolVector2Array( -14.9921, -19.6603, -8.59962, -22.9534, -2.98199, -23.3408, 2.24821, -25.0842, 8.44698, -23.1471, 12.1275, -19.854, 17.9388, -12.493, 20.0697, -9.97472, 21.8131, -4.35709, 21.4257, 4.74735, 20.8445, 11.1398, 17.7451, 15.9826, 12.7086, 19.4694, 8.8344, 23.5374, -3.56313, 26.443, -7.63107, 26.443, -13.6361, 22.5688, -19.8349, 6.68447, -19.8349, -1.83884, -20.2223, -8.23132, -18.8663, -15.0112 )
