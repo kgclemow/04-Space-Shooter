@@ -1,7 +1,8 @@
 extends Label
 
 func _ready():
-	update_score()
-
-func update_score():
-	text = "score: " + str(get_parent().score)
+	pass
+	
+func _on_Player_score_changed():
+	var s = get_node("/root/Game/Spaceship").score
+	$Score.text = "Score: " +str(s)

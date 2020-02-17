@@ -1,16 +1,51 @@
 extends KinematicBody2D
 
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
+export var score = 0 
+export var margin = 5 
+export var y_range = 300
+export var acceleration = 0.1
 
-# Called when the node enters the scene tree for the first time.
+var velocity = Vector2(0,0)
+
+onready var VP = get_viewport_rect().size
+
+onready var Bullet_R = load("res://Scenes?Bullet.R.tscn")
+
+signal score_changed
+
 func _ready():
-	pass # Replace with function body.
+	emit_signal("socre changed")
 
+func change_score(s):
+	score += s
+	emit_signal("score changed")
+	
+func die():
+	queue_free()
+	get_tree().change_scene("res://Scenes/GameOver.tscn")
 
-# warning-ignore:unused_argument
 func _physics_process(delta):
+	if Input.is_action_pressed("Fire"):
+		var b = Bullet_R.instance()
+		b.position = position
+		b.position.y -= 25
+		get_node("/root/Game/Bullets").fire(b)
+		
+	if position.x < margin:
+		velocity.x = 0
+		position.x = margin
+	if position.x > VP.x - margin:
+		velocity.x = 0
+		position.x = VP.x - margin
+	if position.y < VP.y - y_range:
+		velocity.y = 0
+		position.y = VP.y - y_range
+	if position.y > VP.y - margin:
+		velocity.y = 0
+		position.y = VP.y - margin
+		
+	var collision = move_and_collide(velocity)
+	
 	if Input.is_action_pressed("left"):
 		position.x = position.x - 10
 	if Input.is_action_pressed("right"):

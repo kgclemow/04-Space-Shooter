@@ -1,0 +1,108 @@
+[gd_scene load_steps=12 format=2]
+
+[ext_resource path="res://Scripts/SpaceShooter.gd" type="Script" id=1]
+[ext_resource path="res://Assets/Starset.png" type="Texture" id=2]
+[ext_resource path="res://Scripts/Spaceship.gd" type="Script" id=3]
+[ext_resource path="res://Assets/DurrrSpaceShip.png" type="Texture" id=4]
+[ext_resource path="res://Assets/A-Space Bold Demo.otf" type="DynamicFontData" id=5]
+[ext_resource path="res://Scripts/score.gd" type="Script" id=6]
+[ext_resource path="res://Assets/1346945972.png" type="Texture" id=7]
+[ext_resource path="res://Assets/enemyship.png" type="Texture" id=8]
+[ext_resource path="res://Scenes/Explosion.tscn" type="PackedScene" id=9]
+
+[sub_resource type="DynamicFont" id=1]
+size = 20
+font_data = ExtResource( 5 )
+
+[sub_resource type="SpriteFrames" id=2]
+animations = [ {
+"frames": [  ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[node name="Game" type="Node2D"]
+script = ExtResource( 1 )
+
+[node name="Background" type="Sprite" parent="."]
+position = Vector2( 457.634, 275.852 )
+scale = Vector2( 0.622451, 0.79344 )
+texture = ExtResource( 2 )
+
+[node name="Spaceship" type="KinematicBody2D" parent="."]
+editor/display_folded = true
+position = Vector2( 504.248, 491.575 )
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="Sprite" parent="Spaceship"]
+position = Vector2( -22.7152, 27.9452 )
+scale = Vector2( 1.38335, 1.57299 )
+texture = ExtResource( 4 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Spaceship"]
+position = Vector2( -25.4207, 26.0552 )
+scale = Vector2( 0.784075, 0.806526 )
+polygon = PoolVector2Array( -22.8162, 62.0427, -55.8477, 61.6246, -57.102, 74.1682, -66.7188, 72.9139, -66.7188, 62.0427, -73.8268, 60.3703, -73.4087, 44.8998, -40.7953, 28.175, -39.541, 21.9032, -51.6665, 21.4851, -31.5967, 4.76024, -64.2101, 2.66965, -22.8162, -20.327, -21.5618, -70.0833, -6.92758, -79.282, -4.83698, -32.4525, -1.49203, -38.3062, 3.94354, -32.4525, 4.36166, -82.2088, 21.5046, -67.9927, 21.9227, -19.9089, 62.0623, 2.25153, 29.867, 2.25153, 51.1911, 19.3945, 36.5569, 20.6488, 72.5153, 43.6454, 72.0972, 58.6978, 64.571, 62.4608, 64.9891, 69.987, 54.5361, 70.8233, 53.2817, 60.3703, 24.8495, 61.6246, 21.0865, 67.4783, 19.8321, 83.785, -19.8893, 84.6212 )
+
+[node name="Info" type="Node2D" parent="."]
+editor/display_folded = true
+
+[node name="score" type="Label" parent="Info"]
+margin_right = 72.0
+margin_bottom = 29.0
+custom_fonts/font = SubResource( 1 )
+text = "Score:"
+script = ExtResource( 6 )
+
+[node name="Walls" type="StaticBody2D" parent="."]
+editor/display_folded = true
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Walls"]
+polygon = PoolVector2Array( -0.931824, 599.839, -0.595551, -2.62944, 1028.77, -1.5214, 1027.78, 601.131, 1059.5, -38.8383, -34.2111, -38.8383 )
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 2.0
+autostart = true
+
+[node name="Meteors" type="Node" parent="."]
+
+[node name="Meteor" type="RigidBody2D" parent="Meteors"]
+
+[node name="Sprite" type="Sprite" parent="Meteors/Meteor"]
+position = Vector2( 77.6108, -98.0569 )
+scale = Vector2( 0.112561, 0.112455 )
+texture = ExtResource( 7 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Meteors/Meteor"]
+polygon = PoolVector2Array( 62.8247, -136.587, 72.2072, -136.587, 80.6191, -139.499, 87.7368, -138.205, 91.9428, -136.264, 101.325, -124.293, 105.855, -119.44, 108.119, -113.94, 110.061, -106.175, 108.443, -81.2632, 104.884, -75.4396, 98.0899, -68.6454, 94.8546, -64.4394, 72.5307, -57.3217, 62.1777, -58.9393, 55.707, -66.3806, 46.9716, -89.3515, 47.6187, -119.764, 53.1187, -131.087 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Enemyship" type="KinematicBody2D" parent="."]
+editor/display_folded = true
+
+[node name="Sprite" type="Sprite" parent="Enemyship"]
+position = Vector2( 592.121, -215.512 )
+scale = Vector2( 0.244888, 0.269882 )
+texture = ExtResource( 8 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Enemyship"]
+polygon = PoolVector2Array( 590.658, -236.212, 593.662, -235.998, 593.662, -240.505, 600.531, -240.934, 600.746, -236.641, 602.677, -236.212, 604.18, -234.28, 612.551, -239.432, 614.482, -245.442, 636.59, -256.174, 636.805, -249.52, 613.624, -223.978, 613.195, -230.846, 607.614, -226.553, 604.394, -223.334, 604.394, -218.397, 601.604, -217.539, 601.604, -206.592, 606.326, -211.958, 606.541, -219.685, 608.473, -216.895, 608.258, -196.504, 606.326, -190.709, 605.468, -203.587, 601.604, -198.007, 601.604, -195.216, 598.599, -195.431, 599.458, -191.782, 598.17, -190.28, 598.385, -184.484, 595.38, -180.835, 594.95, -174.182, 589.37, -174.182, 588.511, -180.406, 586.365, -184.27, 586.365, -190.709, 584.218, -195.431, 582.931, -195.431, 582.931, -199.938, 578.638, -202.943, 577.779, -190.923, 575.633, -198.865, 576.062, -215.392, 577.779, -220.114, 578.638, -209.168, 582.287, -206.163, 582.501, -216.036, 581.213, -218.612, 579.496, -218.826, 579.496, -223.119, 573.701, -229.988, 570.482, -230.632, 570.696, -225.051, 546.657, -250.593, 547.515, -256.388, 569.838, -245.442, 570.696, -239.861, 580.14, -233.637, 581.213, -236.212, 583.574, -235.568, 583.36, -240.934, 590.014, -240.72 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Explosion" type="Node2D" parent="."]
+
+[node name="Explosion" parent="Explosion" instance=ExtResource( 9 )]
+
+[node name="Sprite" type="AnimatedSprite" parent="Explosion/Explosion"]
+frames = SubResource( 2 )
+
+[node name="Bulets" type="Node" parent="."]
+[connection signal="animation_finished" from="Explosion/Explosion/Sprite" to="Explosion/Explosion" method="_on_Sprite_animation_finished"]

@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Scripts/Bullet.gd" type="Script" id=1]
+[ext_resource path="res://Assets/spr_missile_half.png" type="Texture" id=2]
+
+[node name="Bullet" type="RigidBody2D"]
+collision_layer = 2
+collision_mask = 12
+mode = 2
+gravity_scale = 0.0
+can_sleep = false
+linear_damp = 0.0
+angular_damp = 0.0
+script = ExtResource( 1 )
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( -182.413, 57.5039 )
+scale = Vector2( 1.0487, -0.697086 )
+texture = ExtResource( 2 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PoolVector2Array( -186.466, 45.5071, -178.412, 45.3082, -178.213, 48.2914, -175.13, 48.6892, -178.113, 52.3685, -177.914, 66.8867, -182.588, 69.6711, -186.566, 66.5884, -186.566, 53.2634, -190.046, 48.4903, -186.765, 48.6892 )
