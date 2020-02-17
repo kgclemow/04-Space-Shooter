@@ -84,7 +84,6 @@ __meta__ = {
 }
 
 [node name="Enemyship" type="KinematicBody2D" parent="."]
-editor/display_folded = true
 
 [node name="Sprite" type="Sprite" parent="Enemyship"]
 position = Vector2( 592.121, -215.512 )
