@@ -30,7 +30,7 @@ func _physics_process(delta):
 	if Input.is_action_pressed("fire"):
 		var b = Bullet.instance()
 		b.position = position
-		b.position.y -= 490
+		b.position.y -= 25
 		get_node("/root/Game/Bullets").fire(b)
 		
 	if position.x < margin:

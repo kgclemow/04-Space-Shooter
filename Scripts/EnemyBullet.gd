@@ -3,7 +3,7 @@ extends RigidBody2D
 export var speed = 500
 export var damage = 10
 onready var Explosion = load("res://Scenes/Explosion.tscn")
-onready var Player = get_node("/root/Game/Spaceship")
+onready var Spaceship = get_node("/root/Game/Spaceship")
 
 func _ready():
 	contact_monitor = true
@@ -15,9 +15,7 @@ func _physics_process(delta):
 		var explosion = Explosion.instance()
 		explosion.position = position
 		explosion.get_node("Sprite").playing = true
-		get_node("/root/Game/Explosions").add_child(explosion)
-		if c.name == "Spaceship":
-			Player.change_health(-damage)
+		get_node("/root/Game/Explosion").add_child(explosion)
 		queue_free()
 
 	if position.y > get_viewport_rect().size.y + 10:

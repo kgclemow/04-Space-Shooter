@@ -19,6 +19,10 @@ config/name="Template"
 run/main_scene="res://Scenes/SpaceGame.tscn"
 config/icon="res://icon.png"
 
+[display]
+
+window/size/resizable=false
+
 [input]
 
 left={

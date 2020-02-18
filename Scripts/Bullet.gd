@@ -13,14 +13,11 @@ func _ready():
 func _physics_process(delta):
 	var colliding = get_colliding_bodies()
 	for c in colliding:
-		var Explosion = Explosion.instance()
-		Explosion.position = position
-		Explosion.get_node("Sprite").playing = true
-		get_node("/root/Game/Explosion").add_child(Explosion)
-		if c.get_parent().name == "Enemyship":
-			Spaceship.change_score(c.score)
-			c.die()
-		queue_free()
+		var explosion = Explosion.instance()
+		explosion.position = position
+		explosion.get_node("Sprite").playing = true
+		get_node("/root/Game/Explosion").add_child(explosion)
+
 
 	if position.y < -10:
 		queue_free()

@@ -28,6 +28,7 @@ func _ready():
 	get_new_position()
 
 
+# warning-ignore:unused_argument
 func _physics_process(delta):
 	if ready:
 		$Tween.start()
