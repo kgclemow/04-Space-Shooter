@@ -9,26 +9,28 @@ var velocity = Vector2(0,0)
 
 onready var VP = get_viewport_rect().size
 
-onready var Bullet_R = load("res://Scenes?Bullet.R.tscn")
+onready var Bullet = load("res://Scenes/Bullet.tscn")
 
 signal score_changed
 
 func _ready():
-	emit_signal("socre changed")
+	emit_signal("score_changed")
 
 func change_score(s):
 	score += s
-	emit_signal("score changed")
+	emit_signal("score_changed")
 	
 func die():
 	queue_free()
+# warning-ignore:return_value_discarded
 	get_tree().change_scene("res://Scenes/GameOver.tscn")
 
+# warning-ignore:unused_argument
 func _physics_process(delta):
-	if Input.is_action_pressed("Fire"):
-		var b = Bullet_R.instance()
+	if Input.is_action_pressed("fire"):
+		var b = Bullet.instance()
 		b.position = position
-		b.position.y -= 25
+		b.position.y -= 490
 		get_node("/root/Game/Bullets").fire(b)
 		
 	if position.x < margin:
@@ -43,8 +45,6 @@ func _physics_process(delta):
 	if position.y > VP.y - margin:
 		velocity.y = 0
 		position.y = VP.y - margin
-		
-	var collision = move_and_collide(velocity)
 	
 	if Input.is_action_pressed("left"):
 		position.x = position.x - 10
@@ -54,3 +54,6 @@ func _physics_process(delta):
 		position.y = position.y + -10
 	if Input.is_action_pressed("down"):
 		position.y = position.y + 10
+
+# warning-ignore:unused_variable
+	var collision = move_and_collide(velocity)
