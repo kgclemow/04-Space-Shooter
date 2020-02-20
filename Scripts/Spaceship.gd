@@ -20,6 +20,10 @@ func change_score(s):
 	score += s
 	emit_signal("score_changed")
 	
+func score_lowered(d):
+	score += d
+	emit_signal("score_lowered")
+	
 func die():
 	queue_free()
 # warning-ignore:return_value_discarded

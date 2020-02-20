@@ -1,7 +1,7 @@
 extends RigidBody2D
 
 export var speed = 500
-export var damage = 10
+export var score = -10
 onready var Explosion = load("res://Scenes/Explosion.tscn")
 onready var Spaceship = get_node("/root/Game/Spaceship")
 
@@ -16,6 +16,8 @@ func _physics_process(delta):
 		explosion.position = position
 		explosion.get_node("Sprite").playing = true
 		get_node("/root/Game/Explosion").add_child(explosion)
+		if c.get_node("/root/Game/Spaceship"):
+			Spaceship.score_lowered(c.score)
 		queue_free()
 
 	if position.y > get_viewport_rect().size.y + 10:

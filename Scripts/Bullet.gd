@@ -17,6 +17,10 @@ func _physics_process(delta):
 		explosion.position = position
 		explosion.get_node("Sprite").playing = true
 		get_node("/root/Game/Explosion").add_child(explosion)
+		if c.get_parent().name == 'Enemies':
+			Spaceship.change_score(c.score)
+			c.die()
+		queue_free()
 
 
 	if position.y < -10:

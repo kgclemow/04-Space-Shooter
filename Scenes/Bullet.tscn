@@ -17,9 +17,9 @@ __meta__ = {
 }
 
 [node name="Sprite" type="Sprite" parent="."]
-position = Vector2( -182.413, 57.5039 )
-scale = Vector2( 1.0487, -0.697086 )
+scale = Vector2( 1.049, 1.049 )
 texture = ExtResource( 2 )
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
-polygon = PoolVector2Array( -186.466, 45.5071, -178.412, 45.3082, -178.213, 48.2914, -175.13, 48.6892, -178.113, 52.3685, -177.914, 66.8867, -182.588, 69.6711, -186.566, 66.5884, -186.566, 53.2634, -190.046, 48.4903, -186.765, 48.6892 )
+scale = Vector2( 1.049, 1.049 )
+polygon = PoolVector2Array( 8, -15.2, 8, 17, 4.9, 17, -8, 16, -8, -13.7, -7.8, -16, -5.8, -16, -4, -17.8, 2.4, -18 )

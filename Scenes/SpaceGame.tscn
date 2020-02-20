@@ -1,15 +1,15 @@
 [gd_scene load_steps=19 format=2]
 
-[ext_resource path="res://Scripts/Info.gd" type="Script" id=1]
-[ext_resource path="res://Assets/Starset.png" type="Texture" id=2]
-[ext_resource path="res://Scripts/Spaceship.gd" type="Script" id=3]
-[ext_resource path="res://Assets/DurrrSpaceShip.png" type="Texture" id=4]
+[ext_resource path="res://Assets/Starset.png" type="Texture" id=1]
+[ext_resource path="res://Scripts/Spaceship.gd" type="Script" id=2]
+[ext_resource path="res://Assets/DurrrSpaceShip.png" type="Texture" id=3]
+[ext_resource path="res://Scripts/Info.gd" type="Script" id=4]
 [ext_resource path="res://Assets/A-Space Bold Demo.otf" type="DynamicFontData" id=5]
-[ext_resource path="res://Scripts/Meteors.gd" type="Script" id=7]
-[ext_resource path="res://Scenes/Explosion.tscn" type="PackedScene" id=9]
-[ext_resource path="res://Assets/Explosion Medium.png" type="Texture" id=10]
-[ext_resource path="res://Scripts/Bullets.gd" type="Script" id=11]
-[ext_resource path="res://Scripts/Enemies.gd" type="Script" id=14]
+[ext_resource path="res://Scripts/Meteors.gd" type="Script" id=6]
+[ext_resource path="res://Scenes/Explosion.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Assets/Explosion Medium.png" type="Texture" id=8]
+[ext_resource path="res://Scripts/Bullets.gd" type="Script" id=9]
+[ext_resource path="res://Scripts/Enemies.gd" type="Script" id=10]
 
 [sub_resource type="DynamicFont" id=1]
 size = 20
@@ -17,32 +17,32 @@ font_data = ExtResource( 5 )
 
 [sub_resource type="AtlasTexture" id=2]
 flags = 4
-atlas = ExtResource( 10 )
+atlas = ExtResource( 8 )
 region = Rect2( 0, 0, 64, 64 )
 
 [sub_resource type="AtlasTexture" id=3]
 flags = 4
-atlas = ExtResource( 10 )
+atlas = ExtResource( 8 )
 region = Rect2( 64, 0, 64, 64 )
 
 [sub_resource type="AtlasTexture" id=4]
 flags = 4
-atlas = ExtResource( 10 )
+atlas = ExtResource( 8 )
 region = Rect2( 128, 0, 64, 64 )
 
 [sub_resource type="AtlasTexture" id=5]
 flags = 4
-atlas = ExtResource( 10 )
+atlas = ExtResource( 8 )
 region = Rect2( 192, 0, 64, 64 )
 
 [sub_resource type="AtlasTexture" id=6]
 flags = 4
-atlas = ExtResource( 10 )
+atlas = ExtResource( 8 )
 region = Rect2( 256, 0, 64, 64 )
 
 [sub_resource type="AtlasTexture" id=7]
 flags = 4
-atlas = ExtResource( 10 )
+atlas = ExtResource( 8 )
 region = Rect2( 320, 0, 64, 64 )
 
 [sub_resource type="SpriteFrames" id=8]
@@ -57,30 +57,26 @@ animations = [ {
 
 [node name="Background" type="Sprite" parent="."]
 scale = Vector2( 0.633511, 0.806733 )
-texture = ExtResource( 2 )
+texture = ExtResource( 1 )
 centered = false
 
-[node name="Spaceship" type="Node" parent="."]
-
-[node name="Spaceship2" type="KinematicBody2D" parent="Spaceship"]
+[node name="Spaceship" type="KinematicBody2D" parent="."]
 position = Vector2( 566.803, 495.103 )
-script = ExtResource( 3 )
+script = ExtResource( 2 )
 __meta__ = {
 "_edit_group_": true
 }
 
-[node name="Sprite" type="Sprite" parent="Spaceship/Spaceship2"]
-position = Vector2( -22.7152, 27.9452 )
+[node name="Sprite" type="Sprite" parent="Spaceship"]
 scale = Vector2( 1.38335, 1.57299 )
-texture = ExtResource( 4 )
+texture = ExtResource( 3 )
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Spaceship/Spaceship2"]
-position = Vector2( -25.4207, 26.0552 )
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Spaceship"]
 scale = Vector2( 0.784075, 0.806526 )
 polygon = PoolVector2Array( -22.8162, 62.0427, -55.8477, 61.6246, -57.102, 74.1682, -66.7188, 72.9139, -66.7188, 62.0427, -73.8268, 60.3703, -73.4087, 44.8998, -40.7953, 28.175, -39.541, 21.9032, -51.6665, 21.4851, -31.5967, 4.76024, -64.2101, 2.66965, -22.8162, -20.327, -21.5618, -70.0833, -6.92758, -79.282, -4.83698, -32.4525, -1.49203, -38.3062, 3.94354, -32.4525, 4.36166, -82.2088, 21.5046, -67.9927, 21.9227, -19.9089, 62.0623, 2.25153, 29.867, 2.25153, 51.1911, 19.3945, 36.5569, 20.6488, 72.5153, 43.6454, 72.0972, 58.6978, 64.571, 62.4608, 64.9891, 69.987, 54.5361, 70.8233, 53.2817, 60.3703, 24.8495, 61.6246, 21.0865, 67.4783, 19.8321, 83.785, -19.8893, 84.6212 )
 
 [node name="Info" type="Node2D" parent="."]
-script = ExtResource( 1 )
+script = ExtResource( 4 )
 
 [node name="score" type="Label" parent="Info"]
 margin_left = 12.1934
@@ -98,29 +94,35 @@ wait_time = 2.0
 autostart = true
 
 [node name="Meteors" type="Node" parent="."]
-script = ExtResource( 7 )
+editor/display_folded = true
+script = ExtResource( 6 )
 
 [node name="Timer" type="Timer" parent="Meteors"]
 autostart = true
 
 [node name="Explosion" type="Node2D" parent="."]
 
-[node name="Explosion" parent="Explosion" instance=ExtResource( 9 )]
+[node name="Explosion" parent="Explosion" instance=ExtResource( 7 )]
 
 [node name="Sprite" type="AnimatedSprite" parent="Explosion/Explosion"]
 frames = SubResource( 8 )
 
 [node name="Bullets" type="Node" parent="."]
-script = ExtResource( 11 )
+editor/display_folded = true
+script = ExtResource( 9 )
 
 [node name="Timer" type="Timer" parent="Bullets"]
 one_shot = true
 
 [node name="Enemies" type="Node" parent="."]
-script = ExtResource( 14 )
+script = ExtResource( 10 )
+
+[node name="Timer" type="Timer" parent="Enemies"]
+autostart = true
 
 [node name="Enemy Bullets" type="Node2D" parent="."]
-[connection signal="score_changed" from="Spaceship/Spaceship2" to="Info" method="_on_Spaceship_score_changed"]
+[connection signal="score_changed" from="Spaceship" to="Info" method="_on_Spaceship_score_changed"]
 [connection signal="timeout" from="Meteors/Timer" to="Meteors" method="_on_Timer_timeout"]
 [connection signal="animation_finished" from="Explosion/Explosion/Sprite" to="Explosion/Explosion" method="_on_Sprite_animation_finished"]
 [connection signal="timeout" from="Bullets/Timer" to="Bullets" method="_on_Timer_timeout"]
+[connection signal="timeout" from="Enemies/Timer" to="Enemies" method="_on_Timer_timeout"]

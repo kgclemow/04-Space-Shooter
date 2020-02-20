@@ -24,7 +24,7 @@ func _physics_process(delta):
 			var explosion = Explosion.instance()
 			explosion.position = position
 			explosion.get_node("Sprite").playing = true
-			get_node("/root/Game/Explosion").add_child(Explosion)
+			get_node("/root/Game/Explosion").add_child(explosion)
 		queue_free()
 		
 	if position.y > get_viewport_rect().size.y + 50:
